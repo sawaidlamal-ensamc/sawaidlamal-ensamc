@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Anonymous",
+    "image": "./book-assets/img/testimonial_img_person_1.jpg",
+    "text": "Tinirt Ensam-c Books makes reading easy by facilitating access to books at affordable prices",
+    "stars": 5
+  },
+  {
+    "name": "Anonymous",
+    "image": "./book-assets/img/testimonial_img_person_1.jpg",
+    "text": "Good books, good prices, and smooth service.",
+    "stars": 4
+  },
+  {
+    "name": "Anonymous",
+    "image": "./book-assets/img/testimonial_img_person_1.jpg",
+    "text": "Good books, good prices, and smooth service.",
+    "stars": 4
+  }
+]

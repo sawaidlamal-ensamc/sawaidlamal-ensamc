@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Form</title>
+    <link rel="stylesheet" href="./book-assets/css/styles.css"> 
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        function fillUIFromBook(book) {
+            if (!book) return;
+
+            // fill form 
+            const input = document.getElementById('bookName');
+            if (input) input.value = book.title || '';
+
+            //image
+            const preview = document.getElementById('bookPreview');
+            const img = document.getElementById('bookImage');
+            const desc = document.getElementById('bookDesc');
+
+            if (preview) preview.style.display = 'block';
+            if (img && book.image) img.src = book.image;
+
+            // if we add description in json data;
+            if (desc) desc.textContent = book.description || '';
+        }
+
+        function autofillForm() {
+            //  sessionStorage
+            const stored = sessionStorage.getItem('selectedBook');
+            if (stored) {
+            try {
+                const book = JSON.parse(stored);
+                fillUIFromBook(book);
+                return;
+            } catch (e) {}
+            }
+
+            // fallback
+            const bookName = getQueryParam('book');
+            if (bookName) {
+            const input = document.getElementById('bookName');
+            if (input) input.value = bookName;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', autofillForm);
+    </script>
+ 
+    <style>
+        .page{
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .section_title {
+        font-size: var(--biggest-font-size);
+        font-weight: 800;
+        text-align: center;
+        margin: 10px 0 22px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--title-color);
+        }
+
+        .section_title::after {
+        content: '';
+        display: block;
+        width: 90px;
+        height: 3px;
+        background: var(--first-color);
+        margin: 10px auto 0;
+        border-radius: 2px;
+        }
+
+        .layout {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 18px;
+        align-items: start;
+        }
+
+        .panel{
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 18px;
+        }
+        .book-preview{
+            display: none; /* shown by JS */
+        }
+
+        .book-name{
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            margin: 6px 0 14px;
+        }
+
+        .book-cover{
+            width: 100%;
+            max-width: 220px;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            display: block;
+            margin: 0 auto 12px;
+            background: #fff;
+        }
+
+        .book-desc{
+            text-align: center;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+       
+        form{
+            margin: 0;
+            
+        }
+
+        .form-title {
+            font-size: var(--h2-font-size);
+            font-weight: 800;
+            margin: 6px 0 14px;
+            color: var(--title-color);
+            }
+
+        label{
+            display:block;
+            color: #374151;
+            margin: 12px 0 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"]{
+            width:100%;
+            padding: 12px 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+
+        input[readonly]{
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        input:focus{
+            border-color: rgba(122,158,252,.9);
+            box-shadow: 0 0 0 4px rgba(122,158,252,.18);
+        }
+
+        .radio-group{
+            display:flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding: 10px 12px;
+            border: 1px dashed rgba(0,0,0,.18);
+            border-radius: 12px;
+            background: #fbfcff;
+        }
+
+        .radio-group label{
+            margin: 0;
+            font-weight: 500;
+            display:flex;
+            align-items:center;
+            gap: 8px;
+            color: #374151;
+        }
+
+        .submit{
+            width:100%;
+            margin-top: 16px;
+            padding: 12px 14px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            background: #8b2c2c;
+            box-shadow: 0 10px 22px rgba(139,44,44,.30);
+            transition: transform .06s ease, background-color .2s ease;
+        }
+
+        .submit:hover{  background: #742424;
+                        box-shadow: 0 14px 26px rgba(116,36,36,.35);
+                        transform: translateY(-1px); 
+                    }
+        .submit:active{ transform: translateY(1px); }
+
+        /* Responsive */
+        @media (max-width: 900px){
+            .layout{ grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+  <div class="page">
+    <h2 class="section_title">Form to Get the Book</h2>
+
+    <div class="layout">
+      <!--book preview -->
+      <div class="panel book-preview" id="bookPreview">
+        <div class="book-name" id="bookTitleTop"></div>
+        <img id="bookImage" class="book-cover" src="" alt="Book cover">
+        <p id="bookDesc" class="book-desc" style="text-overflow: ellipsis;"></p>
+      </div>
+
+      <!--  form -->
+      <div class="panel">
+        <div class="form-title">Your Information</div>
+
+        <form action="https://formsubmit.co/ayoubelmo99@gmail.com" method="POST">
+          <label for="bookName">Book Name:</label>
+          <input type="text" id="bookName" name="bookName" readonly>
+
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+          <label>Are you a member in Sawaid Al Amal Club?</label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="Member in Sawaid Al Amal Club" value="yes" required>
+              Yes
+            </label>
+            <label>
+              <input type="radio" name="Member in Sawaid Al Amal Club" value="no" required>
+              No
+            </label>
+          </div>
+
+          <input class="submit" type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

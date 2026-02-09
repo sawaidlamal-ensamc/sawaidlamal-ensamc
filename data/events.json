@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "في رحاب الحبيب",
+    "date": "Dec 18, 2024",
+    "location": "ENSAM CASA, Conference Room",
+    "description": "Join us for a day of incredible insights with experts in the Sirah Nabawiya of the Prophet",
+    "image": "./assets/img/activities/Siranabawiya.png"
+  },
+  {
+    "id": 2,
+    "title": "في رحاب الحبيب",
+    "date": "Dec 18, 2024",
+    "location": "ENSAM CASA, Conference Room",
+    "description": "Join us for a day of incredible insights with experts in the Sirah Nabawiya of the Prophet",
+    "image": "./assets/img/activities/Siranabawiya.png"
+  },
+  {
+    "id": 3,
+    "title": "في رحاب الحبيب",
+    "date": "Dec 18, 2024",
+    "location": "ENSAM CASA, Conference Room",
+    "description": "Join us for a day of incredible insights with experts in the Sirah Nabawiya of the Prophet",
+    "image": "./assets/img/activities/Siranabawiya.png"
+  }
+]

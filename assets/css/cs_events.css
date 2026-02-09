@@ -1,0 +1,192 @@
+
+.event-section {
+    max-width: 800px;
+    margin:  auto;
+    padding: 20px;
+   
+}
+  
+  
+  .event-logo {
+    width: 250px;
+    height: auto;
+  }
+  
+  .guidelines,
+  .competition-format {
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
+  
+  ol {
+    padding-left: 20px;
+  }
+
+
+  .event-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.event-logo {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: auto;
+}
+h1 {
+    text-align: center;
+}
+.event-item {
+    margin-bottom: 20px;
+}
+.event-item h2 {
+    margin-top: 10px;
+}
+.event-item p {
+    margin-top: 5px;
+}
+
+
+
+
+
+.slide img{
+    width:auto;
+      height:70px;
+     margin: 10px;
+      
+    }
+    
+    @keyframes scroll{
+      0%{
+        transform:translateX(0);
+      }
+      
+      100%{
+        transform:translateX(calc(-250px *7))
+      }
+    }
+    
+    
+    
+    .slider{
+      margin-top:10px;
+      padding:20px;
+     
+      width:auto;
+      overflow:hidden;
+      height:auto;
+      position:relative;
+    }
+    
+    .slider-track{
+      display:flex;
+      width:calc(250px *14);
+    /*   gap:3em; */
+      animation:scroll 20s linear infinite;
+    }
+    
+    .slide{
+        width:auto;
+      height:auto;
+      margin: auto;
+    }
+
+  
+
+    .event-section {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .event-intro {
+        margin-bottom: 20px;
+    }
+    
+    .event-intro h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    
+    .event-details h3,
+    .event-highlights h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .event-details ul,
+    .event-highlights ol {
+        margin-bottom: 20px;
+        list-style-type: none; 
+    }
+    
+    .event-details ul li,
+    .event-highlights ol li {
+        margin-bottom: 10px;
+    }
+    
+    .event-details ul li strong,
+    .event-highlights ol li strong {
+        font-weight: bold;
+    }
+    
+  
+    .event-details ul li i {
+        margin-right: 10px; 
+        color: #ff7f50; 
+        font-size: 24px; 
+    }
+    
+  
+    .event-details ul li i:hover {
+        color: #007bff; 
+        cursor: pointer;
+    }
+   
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: #0056b3;
+}
+
+
+.container {
+  text-align: center;
+  margin-top: auto; 
+}
+
+.contact-number {
+  font-size: 28px;
+  color: #ff7f50; 
+  font-weight: 500;
+}
+
+
+.contact-number i {
+  margin-right: 5px;
+}

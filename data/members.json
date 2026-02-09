@@ -1,0 +1,18 @@
+[
+  
+  {"name":"Maouli Youssef","position":"President","image":"./assets/img/logo/person.jpg"},
+  {"name":"Elmorjani Chaimaa","position":"V president","image":"./assets/img/logo/person1.png"},
+  {"name":"Elmortaji Ayoub","position":"General secretary","image":"./assets/img/logo/person.jpg"},
+  {"name":"Sadiki Soukaina","position":"HR manager","image":"./assets/img/logo/person1.png"},
+  {"name":"Majdoul Doae","position":"Social committee manager","image":"./assets/img/logo/person1.png"},
+  {"name":"Mouhibi Assia","position":"Culture committee manager","image":"./assets/img/logo/person1.png"},
+  {"name":"El Mossafir Salma","position":"Masjid committee manager","image":"./assets/img/logo/person1.png"},
+  {"name":"Elabdi Abdenasser","position":"Sponsorship & logistics manager","image":"./assets/img/logo/person.jpg"},
+  {"name":"Ratby Mossaab","position":"Treasurer","image":"./assets/img/logo/person.jpg"},
+  {"name":"Atata Oumaima","position":"Media manager","image":"./assets/img/logo/person1.png"},
+  {"name":"Brighli Yassmine","position":"V media manager","image":"./assets/img/logo/person1.png"},
+  {"name":"Elouzouaz Ismail","position":"Advisor","image":"./assets/img/logo/person.jpg"},
+  {"name":"El Gdali Fatima Ezahra","position":"Advisor","image":"./assets/img/logo/person1.png"},
+  {"name":"Elmahri Rihab","position":"Advisor","image":"./assets/img/logo/person1.png"},
+  {"name":"Laymina Yassine","position":"Advisor","image":"./assets/img/logo/person.jpg"}
+]

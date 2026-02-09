@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="robots" content="index, follow" />
+    <!--- ================================= ICONS ================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+     <link rel="stylesheet" href=" https://remixicon.com/">
+    <!--- ================================= CSS ================================-->
+    <link rel="stylesheet" href="./book-assets/css/styles.css">
+
+    <!--- ================================= SWIPER CSS ================================-->
+    
+      <link rel="stylesheet" href="./book-assets/css/swiper-bundle.min.css">
+
+
+    <title>TINIRT | ENSAM-C BOOKS</title>
+</head>
+<body>
+    <!--================================= HEADER ==============-->
+    <header class="header" id="header">
+       <nav class="nav container">
+            <a href="book.html" class="logo"> <!-- logo-->
+                <i class="ri-book-open-fill"></i> TINIRT Library
+            </a>
+
+            <div class="nav_menu"> <!-- navigation bar menu-->
+                <ul class="nav_list"> 
+    
+                    <!--item 1-->
+                    <li class="nav_item">
+                        <a href="#home" class="nav_link active-link">
+                            <i class="ri-home-smile-line"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+    
+                    <!--item 2-->
+                    <li class="nav_item">
+                        <a href="#featured" class="nav_link">
+                            <i class="ri-book-2-line"></i>
+                            <span>Featured</span>
+                        </a>
+                    </li>
+    
+                    <!--item 3-->
+                    <li class="nav_item">
+                        <a href="#discount" class="nav_link">
+                            <i class="ri-megaphone-line"></i>
+                            <span>Suggestions</span>
+                        </a>
+                    </li>
+                    
+    
+                    <!--item 4-->
+                    <li class="nav_item">
+                        <a href="#new" class="nav_link">
+                            <i class="ri-book-3-line"></i>
+                            <span>New Books</span>
+                        </a>
+                    </li>
+    
+    
+                    <!--item 5-->
+                    <li class="nav_item">
+                        <a href="#testimonial" class="nav_link">
+                            <i class="ri-chat-1-line"></i>
+                            <span>Testimonials</span>
+                        </a>
+                    </li>
+    
+                </ul>
+           </div>
+
+
+           
+       </nav>
+    </header>
+
+
+
+   
+      
+
+
+    <!--================================= Main Section ==============-->
+    <main class="main">
+       <!--================================= Home ==============-->
+        <section class="home section" id="home">
+               <div class="home_container container grid">
+                    <div class="home_data">
+                        <h1 class="home_title">
+                            Discover Your <br>
+                            Next E-Tinirt Book
+                        </h1>
+
+                        <p class="home_description">
+                             A one-stop platform where students
+                             can easily rent or buy their favorite books.
+                             Take advantage of being a member of Sawaid Al Amal and get a 20% 
+                             discount on your rentals or purchases.
+                        </p>
+
+
+                        <a href="#featured" class="button">
+                            Find Yours
+                        </a>
+                    </div>
+
+
+
+
+                    <div class="home_images">
+                        <div class="home_swiper swiper">
+                            <div class="swiper-wrapper">
+                                <article class="home_article swiper-slide">
+                                    <img src="./book-assets/img/book3.jpg" alt="book home" class="home_img">
+                                </article>
+
+                                <article class="home_article swiper-slide">
+                                    <img src="./book-assets/img/book4.jpg" alt="book home" class="home_img">
+                                </article>
+
+                                <article class="home_article swiper-slide">
+                                    <img src="./book-assets/img/book5.jpg"alt="book home" class="home_img">
+                                </article>
+
+
+                                <article class="home_article swiper-slide">
+                                    <img src="./book-assets/img/book14.jpg"alt="book home" class="home_img">
+                                </article>
+
+                                <article class="home_article swiper-slide">
+                                    <img src="./book-assets/img/book8.jpg"alt="book home" class="home_img">
+                                </article>
+
+
+                                <article class="home_article swiper-slide">
+                                    <img src="./book-assets/img/book9.jpg"alt="book home" class="home_img">
+                                </article>
+
+
+                                <article class="home_article swiper-slide">
+                                    <img src="./book-assets/img/book7.png"alt="book home" class="home_img">
+                                </article>
+
+
+                            </div>
+                        </div>
+                    </div>
+               </div>
+        </section>
+
+        <!--================================= Featured Section ==============-->
+<section class="featured section" id="featured">
+    <h2 class="section_title">
+        Featured Books
+    </h2>
+    <!-- Category Bar -->
+    <div class="category_bar">
+        <button class="category_button active" data-category="all">All</button>
+        <button class="category_button" data-category="fiction">Fiction</button>
+        <button class="category_button" data-category="non-fiction">Non-fiction</button>
+        <button class="category_button" data-category="science">Science</button>
+        <button class="category_button" data-category="history">History</button>
+    </div>
+    <div class="featured_container container">
+        <div class="featured_swiper swiper">
+            <div class="swiper-wrapper" id="featured-wrapper">
+            </div>
+            <div class="swiper-button-prev">
+                <i class="ri-arrow-left-s-line"></i>
+            </div>
+            <div class="swiper-button-next">
+                <i class="ri-arrow-right-s-line"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- <script>
+        function redirectToForm(bookName) {
+            // Redirect to the form page and pass the book name in the query string
+            window.location.href = `./Get_Now.html?book=${encodeURIComponent(bookName)}`;
+        }
+    </script>-->
+    
+</section>
+
+<!-- <script>
+    const categoryButtons = document.querySelectorAll('.category_button');
+    const featuredCards = document.querySelectorAll('.featured_card');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+           
+            button.classList.add('active');
+
+          
+            const category = button.getAttribute('data-category');
+
+          
+            featuredCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+</script> -->
+
+<!-- Search Section with Title and Category -->
+<div class="search-container">
+    <h2 class="section_title">Search for a Book</h2>
+    <div class="search-bar">
+       
+        <input type="text" placeholder="Enter book title..." id="search-input" oninput="searchBooks()">
+        
+        <!-- Category  -->
+        <select id="category-select" onchange="searchBooks()">
+            <option value="">All Categories</option> 
+            <option value="fiction">Fiction</option>
+            <option value="non-fiction">Non-fiction</option>
+            <option value="science">Science</option>
+            <option value="technology">Technology</option>
+        </select>
+        
+        <button id="search-btn" onclick="searchBooks()">Search</button>
+    </div>
+</div>
+
+<!-- Search Results Section -->
+<section class="featured section" id="featured-results">
+    <h2 class="section_title">Search Results</h2>
+    <div class="featured_container container" id="results"></div>
+    <div class="pagination" id="pagination"></div>
+
+</section>
+
+<!--================================= Discount ==============-->
+      <section class="discount section" id="discount">
+        <div class="discount_container container grid">
+            <div class="discount_data">
+                <h2 class="discount_title section_title">
+                     Suggestions
+                </h2>
+                <p class="discount_description">
+                    Explore the diverse reading recommendations from our
+                     bookstore community. Share your favorite books and 
+                     discover new titles suggested by fellow members.
+                     Whether it's a classic or a hidden gem, your
+                     input helps us build a richer collection for all to enjoy.
+                </p>
+
+                <a href="" class="button">Go Now</a>
+            </div>
+
+
+            <div class="discount_images">
+                <img src="./book-assets/img/book1.jpg" alt="image" class="discount_img_1">
+                <img src="./book-assets/img/book2.jpg" alt="image" class="discount_img_2">
+               
+            </div>
+        </div>
+      </section>
+
+
+
+       <!--================================= New Books ==============-->
+       <section class="new section" id="new">
+        <h2 class="section_title">
+            New Books
+        </h2>
+        <div class="new_container container">
+            <div class="swiper-wrapper" >
+                <div class="new_swiper swiper">
+                    <div class="swiper-wrapper" id="new-wrapper">
+                        <!--
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book6.jpeg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                
+                                </div>
+                            
+                        </a>
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book13.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book2.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book7.png" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book15.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book3.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book10.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-wrapper" >
+                <div class="new_swiper swiper" >
+                    <div class="swiper-wrapper" id="new-wrapper-2">
+                        <!--
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book9.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book8.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book7.png" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book14.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book16.png" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book12.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+
+
+
+
+                        <a href="" class="new_card swiper-slide">
+                            <img src="./book-assets/img/book10.jpg" alt="image" class="new_img">
+                                <div>
+                                    <h2 class="new_title">New Book</h2>
+                                    <div class="new_prices">
+                                        <span class="new_discount">10 DH</span>
+                                    </div>
+
+                                    <div class="new_starts">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                        </a>
+                        -->
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+       </section>
+
+
+       <!--================================= Testimonials ==============-->
+       <section class="testimonial section" id="testimonial">
+            <h2 class="section_title">
+                Testimonials
+            </h2>
+
+            <div class="testimonial_container container">
+                <div class="testimonial_swiper swiper">
+                    <div class="swiper-wrapper" id="testimonial-wrapper">
+                        <!--<article class="testimonial_card swiper-slide">
+                            <img src="./book-assets/img/testimonial_img_person_1.jpg" alt="testimonial img person 1" class="testimonial_img">
+                            <h2 class="testimonial_title">Anonymous</h2>
+                            <p class="testimonial_description">
+                                Tinirt Ensam-c Books makes reading easy by 
+                                facilitating access to books at affordable prices
+
+                            </p>
+                            <div class="testimonial_stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>
+
+                        <article class="testimonial_card swiper-slide">
+                            <img src="./book-assets/img/testimonial_img_person_1.jpg" alt="testimonial img person 1" class="testimonial_img">
+                            <h2 class="testimonial_title">Anonymous</h2>
+                            <p class="testimonial_description">
+                                Tinirt Ensam-c Books makes reading easy by 
+                                facilitating access to books at affordable prices
+
+                            </p>
+                            <div class="testimonial_stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>
+
+
+                        <article class="testimonial_card swiper-slide">
+                            <img src="./book-assets/img/testimonial_img_person_1.jpg" alt="testimonial img person 1" class="testimonial_img">
+                            <h2 class="testimonial_title">Anonymous</h2>
+                            <p class="testimonial_description">
+                                Tinirt Ensam-c Books makes reading easy by 
+                                facilitating access to books at affordable prices
+
+                            </p>
+                            <div class="testimonial_stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>
+
+
+                        <article class="testimonial_card swiper-slide">
+                            <img src="./book-assets/img/testimonial_img_person_1.jpg" alt="testimonial img person 1" class="testimonial_img">
+                            <h2 class="testimonial_title">Anonymous</h2>
+                            <p class="testimonial_description">
+                                Tinirt Ensam-c Books makes reading easy by 
+                                facilitating access to books at affordable prices
+
+                            </p>
+                            <div class="testimonial_stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </article>-->
+                    </div>
+                </div>
+            </div>
+       </section>
+
+    </main>
+
+
+
+
+   
+
+
+
+
+    <!--================================= Footer ==============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <footer>
+        <div class="footer-container">
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+           
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+           
+           
+          </div>
+          <p>&copy; 2024 E-TINIRT BOOKS. All rights reserved.</p>
+        </div>
+    </footer>
+      
+      
+   
+    <!--================================= Scroll Up ==============-->
+    <a href="" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!--================================= Scroll Reveal ==============-->
+
+      <script src="./book-assets/js/scrollreveal.min.js"></script>
+
+
+    <!--================================= Swiper js ==============-->
+    <script src="./book-assets/js/swiper-bundle.min.js"></script>
+    <script src="./book-assets/js/main.js"></script>
+    <script type="module" src="./assets/js/pages/libraryPage.js"></script>
+</html>
