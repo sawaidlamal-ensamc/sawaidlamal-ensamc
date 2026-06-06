@@ -1,703 +1,625 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="robots" content="index, follow" />
-    <!--- ================================= ICONS ================================-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-     <link rel="stylesheet" href=" https://remixicon.com/">
-    <!--- ================================= CSS ================================-->
-    <link rel="stylesheet" href="./book-assets/css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تينيرت | مكتبة ENSAM-C</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --emerald:#0c3b2e;--emerald-deep:#071f19;--gold:#c9a84c;--gold-light:#e8d48b;
+  --gold-glow:rgba(201,168,76,.15);--burgundy:#6b1d2a;--cream:#faf6ed;
+  --card:#ffffff;--text:#1a1a1a;--muted:#7a7368;--border:#e8e0d4;
+  --radius:16px;--shadow:0 12px 40px rgba(12,59,46,.08);
+  --font-display:'Amiri',serif;--font-body:'Tajawal',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.8}
 
-    <!--- ================================= SWIPER CSS ================================-->
-    
-      <link rel="stylesheet" href="./book-assets/css/swiper-bundle.min.css">
+/* ═══════════════ GEOMETRIC PATTERN SVG BG ═══════════════ */
+.geo-bg{position:absolute;inset:0;opacity:.04;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='%23c9a84c' stroke-width='.5'/%3E%3Cpath d='M40 10L70 40L40 70L10 40Z' fill='none' stroke='%23c9a84c' stroke-width='.3'/%3E%3Cpath d='M40 20L60 40L40 60L20 40Z' fill='none' stroke='%23c9a84c' stroke-width='.3'/%3E%3C/svg%3E");
+  background-size:80px 80px;
+}
 
+/* ═══════════════ NAVBAR ═══════════════ */
+.navbar{position:fixed;top:0;width:100%;z-index:500;transition:all .4s}
+.navbar.scrolled{background:rgba(7,31,25,.97);backdrop-filter:blur(16px);box-shadow:0 4px 30px rgba(0,0,0,.2)}
+.navbar-inner{max-width:1300px;margin:0 auto;padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-size:1.6rem;color:var(--gold);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.6rem}
+.nav-logo i{font-size:1.8rem}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.95rem;font-weight:500;position:relative;padding-bottom:4px;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:0;right:0;width:0;height:2px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:1.5rem}
+.cart-btn{position:relative;background:none;border:none;color:rgba(255,255,255,.8);font-size:1.5rem;cursor:pointer;transition:color .2s}
+.cart-btn:hover{color:var(--gold)}
+.cart-count{position:absolute;top:-5px;left:-8px;background:var(--burgundy);color:#fff;font-size:.6rem;font-weight:800;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-body)}
+.mobile-toggle{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+}
 
-    <title>TINIRT | ENSAM-C BOOKS</title>
+/* ═══════════════ HERO ═══════════════ */
+.hero{min-height:100vh;background:linear-gradient(160deg,var(--emerald) 0%,var(--emerald-deep) 50%,#0a2e23 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding:7rem 2.5rem 5rem}
+.hero .geo-bg{opacity:.06}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.1) 0%,transparent 70%);top:-100px;left:-200px;pointer-events:none}
+.hero-glow-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(107,29,42,.12) 0%,transparent 70%);bottom:-100px;right:-100px;pointer-events:none}
+.hero-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);color:var(--gold-light);padding:.45rem 1.2rem;border-radius:50px;font-size:.8rem;font-weight:600;margin-bottom:1.5rem;backdrop-filter:blur(8px)}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,4.2rem);color:#fff;line-height:1.35;font-weight:700;margin-bottom:1.5rem}
+.hero h1 .gold{color:var(--gold)}
+.hero-desc{color:rgba(255,255,255,.6);font-size:1.1rem;line-height:2;max-width:520px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 2.4rem;border-radius:50px;font-family:var(--font-body);font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;text-decoration:none;border:none}
+.btn-gold{background:var(--gold);color:var(--emerald-deep)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.35)}
+.btn-outline{background:transparent;border:2px solid rgba(201,168,76,.4);color:var(--gold-light)}
+.btn-outline:hover{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.btn-emerald{background:var(--emerald);color:var(--gold)}
+.btn-emerald:hover{background:var(--emerald-deep)}
+.btn-sm{padding:.65rem 1.6rem;font-size:.88rem}
+.btn-full{width:100%;justify-content:center}
+
+/* Hero visual */
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:420px}
+.hero-book-stack{position:relative;width:280px;height:400px}
+.hero-book{position:absolute;width:200px;height:290px;border-radius:12px;box-shadow:0 30px 60px rgba(0,0,0,.5);object-fit:cover;transition:transform .5s cubic-bezier(.23,1,.32,1)}
+.hero-book:nth-child(1){top:40px;right:0;transform:rotate(6deg);z-index:3}
+.hero-book:nth-child(2){top:20px;right:60px;transform:rotate(-3deg);z-index:2}
+.hero-book:nth-child(3){top:55px;right:120px;transform:rotate(-12deg);z-index:1;opacity:.7}
+.hero-book-stack:hover .hero-book:nth-child(1){transform:rotate(2deg) translateY(-10px)}
+.hero-book-stack:hover .hero-book:nth-child(2){transform:rotate(-6deg) translateX(10px)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.1)}
+.hero-stat-num{font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:700}
+.hero-stat-label{font-size:.82rem;color:rgba(255,255,255,.45);margin-top:.2rem}
+
+/* Decorative line */
+.section-line{width:60px;height:3px;background:var(--gold);margin:0 auto 1rem;border-radius:2px}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-desc{margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-visual{margin-top:2rem;min-height:300px}
+  .hero-book-stack{transform:scale(.8)}
+  .hero-stats{justify-content:center}
+}
+
+/* ═══════════════ SECTIONS ═══════════════ */
+section{padding:6rem 2.5rem;position:relative}
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-title{font-family:var(--font-display);font-size:2.4rem;font-weight:700;margin-bottom:.4rem}
+.section-sub{color:var(--muted);font-size:1.05rem;max-width:500px;margin:0 auto}
+
+/* ═══════════════ SEARCH & FILTER ═══════════════ */
+.controls-wrap{max-width:860px;margin:0 auto 3rem;position:relative}
+.controls-bar{display:flex;gap:.75rem;flex-wrap:wrap;background:var(--card);padding:.6rem;border-radius:60px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.controls-bar input{flex:1;min-width:180px;padding:.9rem 1.5rem;border:none;font-size:1rem;background:transparent;outline:none;font-family:var(--font-body);color:var(--text)}
+.controls-bar select{padding:.9rem 1.2rem;border:2px solid var(--border);border-radius:50px;font-size:.9rem;background:var(--cream);font-family:var(--font-body);cursor:pointer;outline:none;color:var(--text);appearance:auto}
+.controls-bar select:focus{border-color:var(--gold)}
+.search-icon{display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--emerald);color:var(--gold);border-radius:50%;font-size:1.2rem;border:none;cursor:pointer;flex-shrink:0;transition:background .2s}
+.search-icon:hover{background:var(--emerald-deep)}
+
+/* Category pills */
+.cat-pills{display:flex;gap:.6rem;justify-content:center;margin-bottom:2.5rem;flex-wrap:wrap}
+.cat-pill{padding:.55rem 1.5rem;border-radius:50px;border:2px solid var(--border);background:var(--card);font-family:var(--font-body);font-size:.88rem;font-weight:600;cursor:pointer;transition:all .25s;color:var(--muted)}
+.cat-pill:hover{border-color:var(--gold);color:var(--gold)}
+.cat-pill.active{background:var(--emerald);border-color:var(--emerald);color:var(--gold)}
+
+/* ═══════════════ BOOK GRID ═══════════════ */
+.book-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2rem}
+.book-card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.04);border:1px solid var(--border);transition:all .4s cubic-bezier(.23,1,.32,1);position:relative;cursor:pointer}
+.book-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(12,59,46,.12);border-color:rgba(201,168,76,.3)}
+.book-cover-wrap{position:relative;overflow:hidden;background:linear-gradient(135deg,#f0ebe3,#e8e0d4)}
+.book-cover{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .5s}
+.book-card:hover .book-cover{transform:scale(1.05)}
+.book-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,31,25,.85) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center;padding:1.5rem}
+.book-card:hover .book-overlay{opacity:1}
+.book-overlay .btn{transform:translateY(10px);transition:transform .3s .1s}
+.book-card:hover .book-overlay .btn{transform:translateY(0)}
+.book-badge{position:absolute;top:14px;right:14px;background:var(--emerald);color:var(--gold);font-size:.7rem;font-weight:700;padding:.35rem .9rem;border-radius:50px;letter-spacing:.3px;z-index:2}
+.book-info{padding:1.3rem 1.4rem}
+.book-title{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.25rem;line-height:1.5}
+.book-author{font-size:.82rem;color:var(--muted);margin-bottom:.8rem}
+.book-bottom{display:flex;justify-content:space-between;align-items:center}
+.book-price{font-weight:800;color:var(--emerald);font-size:1.1rem}
+.book-price span{font-size:.75rem;font-weight:500;color:var(--muted);margin-right:.15rem}
+.book-stars{color:var(--gold);font-size:.75rem;display:flex;gap:1px}
+.no-results{text-align:center;padding:4rem 2rem;color:var(--muted);font-size:1.15rem;grid-column:1/-1}
+.no-results i{font-size:3rem;display:block;margin-bottom:1rem;opacity:.3}
+
+/* ═══════════════ FEATURES STRIP ═══════════════ */
+.features{background:var(--emerald);position:relative;overflow:hidden}
+.features .geo-bg{opacity:.05}
+.features-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;position:relative;z-index:2}
+.feature-card{text-align:center;padding:2rem 1.5rem}
+.feature-icon{width:64px;height:64px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.6rem;color:var(--gold)}
+.feature-card h3{color:#fff;font-family:var(--font-display);font-size:1.15rem;margin-bottom:.5rem}
+.feature-card p{color:rgba(255,255,255,.5);font-size:.88rem;line-height:1.8}
+
+/* ═══════════════ TESTIMONIALS ═══════════════ */
+.testimonials-section{background:var(--card)}
+.test-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.test-card{background:var(--cream);padding:2.5rem;border-radius:var(--radius);position:relative;border:1px solid var(--border);transition:box-shadow .3s}
+.test-card:hover{box-shadow:var(--shadow)}
+.test-quote{position:absolute;top:16px;right:20px;font-family:var(--font-display);font-size:5rem;color:var(--gold);opacity:.15;line-height:1}
+.test-stars{color:var(--gold);font-size:.8rem;margin-bottom:1rem;display:flex;gap:2px}
+.test-text{font-size:.95rem;line-height:2;color:var(--muted);margin-bottom:1.5rem;position:relative}
+.test-author{display:flex;align-items:center;gap:1rem}
+.test-avatar{width:48px;height:48px;border-radius:50%;background:var(--emerald);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.2rem;font-weight:700}
+.test-name{font-weight:700;font-size:.95rem}
+.test-role{font-size:.78rem;color:var(--muted)}
+
+/* ═══════════════ CTA ═══════════════ */
+.cta{background:linear-gradient(135deg,var(--emerald),var(--emerald-deep));position:relative;overflow:hidden;text-align:center}
+.cta .geo-bg{opacity:.05}
+.cta-inner{position:relative;z-index:2;max-width:600px;margin:0 auto}
+.cta h2{font-family:var(--font-display);font-size:2.2rem;color:#fff;margin-bottom:1rem}
+.cta p{color:rgba(255,255,255,.55);margin-bottom:2rem;font-size:1.05rem;line-height:1.9}
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer{background:var(--emerald-deep);padding:3rem 2.5rem 2rem;text-align:center}
+.footer-logo{font-family:var(--font-display);font-size:1.4rem;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.footer-links{display:flex;gap:1.5rem;justify-content:center;margin-bottom:1.5rem}
+.footer-links a{color:rgba(255,255,255,.4);font-size:1.3rem;transition:color .2s;text-decoration:none}
+.footer-links a:hover{color:var(--gold)}
+footer p{color:rgba(255,255,255,.25);font-size:.82rem}
+
+/* ═══════════════ MODALS ═══════════════ */
+.modal-overlay{position:fixed;inset:0;background:rgba(7,31,25,.6);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.modal-overlay.active{display:flex}
+.modal{background:var(--card);border-radius:20px;max-width:500px;width:100%;position:relative;overflow:hidden;animation:modalSlide .4s cubic-bezier(.23,1,.32,1)}
+@keyframes modalSlide{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-header{background:var(--emerald);padding:2rem 2.5rem;position:relative;overflow:hidden}
+.modal-header .geo-bg{opacity:.08}
+.modal-header h2{font-family:var(--font-display);color:#fff;font-size:1.5rem;position:relative;z-index:2}
+.modal-header p{color:rgba(255,255,255,.5);font-size:.88rem;position:relative;z-index:2}
+.modal-close{position:absolute;top:1.2rem;left:1.2rem;background:rgba(255,255,255,.1);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.modal-close:hover{background:rgba(255,255,255,.2)}
+.modal-body{padding:2rem 2.5rem}
+.modal-price-tag{display:flex;align-items:baseline;gap:.4rem;margin-bottom:1.8rem}
+.modal-price-tag .amount{font-family:var(--font-display);font-size:2.2rem;color:var(--emerald);font-weight:700}
+.modal-price-tag .currency{font-size:1rem;color:var(--muted)}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-weight:700;font-size:.82rem;color:var(--muted);margin-bottom:.4rem;letter-spacing:.3px}
+.form-group input,.form-group select{width:100%;padding:.85rem 1.2rem;border:2px solid var(--border);border-radius:12px;font-size:.95rem;font-family:var(--font-body);outline:none;background:var(--cream);transition:border .2s;color:var(--text)}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group input::placeholder{color:#bbb}
+.purchase-options{display:grid;gap:.6rem;margin-bottom:1.5rem}
+.purchase-opt{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:var(--card)}
+.purchase-opt:hover{border-color:var(--gold);background:var(--gold-glow)}
+.purchase-opt.selected{border-color:var(--emerald);background:rgba(12,59,46,.04)}
+.purchase-opt input[type=radio]{display:none}
+.opt-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.purchase-opt.selected .opt-radio{border-color:var(--emerald);background:var(--emerald)}
+.purchase-opt.selected .opt-radio::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%}
+.opt-info{flex:1}
+.opt-label{font-weight:700;font-size:.92rem}
+.opt-desc{font-size:.78rem;color:var(--muted)}
+.opt-price{font-weight:800;font-size:1rem;color:var(--emerald);white-space:nowrap}
+
+/* Success */
+.success-state{display:none;text-align:center;padding:3rem 2.5rem}
+.success-state.active{display:block}
+.success-check{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;font-size:2.5rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;animation:popIn .5s cubic-bezier(.23,1,.32,1)}
+@keyframes popIn{from{transform:scale(0)}60%{transform:scale(1.15)}to{transform:scale(1)}}
+.success-state h2{font-family:var(--font-display);margin-bottom:.5rem;font-size:1.6rem}
+.success-state p{color:var(--muted);line-height:1.9;margin-bottom:2rem;font-size:.95rem}
+.order-summary{background:var(--cream);border-radius:12px;padding:1.2rem 1.5rem;text-align:right;margin-bottom:1.5rem;border:1px solid var(--border)}
+.order-row{display:flex;justify-content:space-between;padding:.4rem 0;font-size:.9rem}
+.order-row.total{border-top:2px solid var(--border);margin-top:.5rem;padding-top:.8rem;font-weight:800;font-size:1.05rem;color:var(--emerald)}
+
+/* Cart modal */
+.cart-body{padding:1.5rem 2.5rem;max-height:400px;overflow-y:auto}
+.cart-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+.cart-item-img{width:50px;height:65px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.cart-item-info{flex:1}
+.cart-item-title{font-weight:700;font-size:.9rem}
+.cart-item-type{font-size:.75rem;color:var(--muted)}
+.cart-item-price{font-weight:800;color:var(--emerald);white-space:nowrap}
+.cart-item-del{background:none;border:none;color:#ccc;font-size:1.1rem;cursor:pointer;transition:color .2s;padding:.3rem}
+.cart-item-del:hover{color:var(--burgundy)}
+.cart-footer{padding:1.5rem 2.5rem;border-top:2px solid var(--border)}
+.cart-total-row{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:800;color:var(--emerald);margin-bottom:1rem}
+.cart-empty{text-align:center;padding:3rem 2rem;color:var(--muted)}
+.cart-empty i{font-size:3rem;display:block;margin-bottom:1rem;opacity:.2}
+
+/* Scroll top */
+.scroll-top{position:fixed;bottom:2rem;left:2rem;width:48px;height:48px;border-radius:50%;background:var(--emerald);color:var(--gold);border:none;font-size:1.3rem;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.15);opacity:0;pointer-events:none;transition:all .3s;z-index:100;display:flex;align-items:center;justify-content:center}
+.scroll-top.visible{opacity:1;pointer-events:auto}
+.scroll-top:hover{background:var(--emerald-deep);transform:translateY(-3px)}
+
+/* ═══════════════ ANIMATIONS ═══════════════ */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.23,1,.32,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media(max-width:600px){
+  .book-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .controls-bar{border-radius:16px;flex-direction:column}
+  .controls-bar input,.controls-bar select{border-radius:12px}
+  .search-icon{width:100%;border-radius:12px;height:44px}
+  section{padding:4rem 1.2rem}
+  .modal-body{padding:1.5rem}
+  .modal-header{padding:1.5rem}
+}
+</style>
 </head>
 <body>
-    <!--================================= HEADER ==============-->
-    <header class="header" id="header">
-       <nav class="nav container">
-            <a href="book.html" class="logo"> <!-- logo-->
-                <i class="ri-book-open-fill"></i> TINIRT Library
-            </a>
 
-            <div class="nav_menu"> <!-- navigation bar menu-->
-                <ul class="nav_list"> 
-    
-                    <!--item 1-->
-                    <li class="nav_item">
-                        <a href="#home" class="nav_link active-link">
-                            <i class="ri-home-smile-line"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-    
-                    <!--item 2-->
-                    <li class="nav_item">
-                        <a href="#featured" class="nav_link">
-                            <i class="ri-book-2-line"></i>
-                            <span>Featured</span>
-                        </a>
-                    </li>
-    
-                    <!--item 3-->
-                    <li class="nav_item">
-                        <a href="#discount" class="nav_link">
-                            <i class="ri-megaphone-line"></i>
-                            <span>Suggestions</span>
-                        </a>
-                    </li>
-                    
-    
-                    <!--item 4-->
-                    <li class="nav_item">
-                        <a href="#new" class="nav_link">
-                            <i class="ri-book-3-line"></i>
-                            <span>New Books</span>
-                        </a>
-                    </li>
-    
-    
-                    <!--item 5-->
-                    <li class="nav_item">
-                        <a href="#testimonial" class="nav_link">
-                            <i class="ri-chat-1-line"></i>
-                            <span>Testimonials</span>
-                        </a>
-                    </li>
-    
-                </ul>
-           </div>
-
-
-           
-       </nav>
-    </header>
-
-
-
-   
-      
-
-
-    <!--================================= Main Section ==============-->
-    <main class="main">
-       <!--================================= Home ==============-->
-        <section class="home section" id="home">
-               <div class="home_container container grid">
-                    <div class="home_data">
-                        <h1 class="home_title">
-                            Discover Your <br>
-                            Next E-Tinirt Book
-                        </h1>
-
-                        <p class="home_description">
-                             A one-stop platform where students
-                             can easily rent or buy their favorite books.
-                             Take advantage of being a member of Sawaid Al Amal and get a 20% 
-                             discount on your rentals or purchases.
-                        </p>
-
-
-                        <a href="#featured" class="button">
-                            Find Yours
-                        </a>
-                    </div>
-
-
-
-
-                    <div class="home_images">
-                        <div class="home_swiper swiper">
-                            <div class="swiper-wrapper">
-                                <article class="home_article swiper-slide">
-                                    <img src="./book-assets/img/book3.jpg" alt="book home" class="home_img">
-                                </article>
-
-                                <article class="home_article swiper-slide">
-                                    <img src="./book-assets/img/book4.jpg" alt="book home" class="home_img">
-                                </article>
-
-                                <article class="home_article swiper-slide">
-                                    <img src="./book-assets/img/book5.jpg"alt="book home" class="home_img">
-                                </article>
-
-
-                                <article class="home_article swiper-slide">
-                                    <img src="./book-assets/img/book14.jpg"alt="book home" class="home_img">
-                                </article>
-
-                                <article class="home_article swiper-slide">
-                                    <img src="./book-assets/img/book8.jpg"alt="book home" class="home_img">
-                                </article>
-
-
-                                <article class="home_article swiper-slide">
-                                    <img src="./book-assets/img/book9.jpg"alt="book home" class="home_img">
-                                </article>
-
-
-                                <article class="home_article swiper-slide">
-                                    <img src="./book-assets/img/book7.png"alt="book home" class="home_img">
-                                </article>
-
-
-                            </div>
-                        </div>
-                    </div>
-               </div>
-        </section>
-
-        <!--================================= Featured Section ==============-->
-<section class="featured section" id="featured">
-    <h2 class="section_title">
-        Featured Books
-    </h2>
-    <!-- Category Bar -->
-    <div class="category_bar">
-        <button class="category_button active" data-category="all">All</button>
-        <button class="category_button" data-category="fiction">Fiction</button>
-        <button class="category_button" data-category="non-fiction">Non-fiction</button>
-        <button class="category_button" data-category="science">Science</button>
-        <button class="category_button" data-category="history">History</button>
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="nav-logo"><i class="ri-book-open-fill"></i>تينيرت</a>
+    <ul class="nav-links">
+      <li><a href="#home">الرئيسية</a></li>
+      <li><a href="#books">الكتب</a></li>
+      <li><a href="#features">المميزات</a></li>
+      <li><a href="#testimonials">آراء الطلبة</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="openCart()" aria-label="سلة المشتريات">
+        <i class="ri-shopping-bag-3-line"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'"><i class="ri-menu-3-line"></i></button>
     </div>
-    <div class="featured_container container">
-        <div class="featured_swiper swiper">
-            <div class="swiper-wrapper" id="featured-wrapper">
-            </div>
-            <div class="swiper-button-prev">
-                <i class="ri-arrow-left-s-line"></i>
-            </div>
-            <div class="swiper-button-next">
-                <i class="ri-arrow-right-s-line"></i>
-            </div>
-        </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="home">
+  <div class="geo-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><i class="ri-verified-badge-fill"></i> مكتبة ENSAM الدار البيضاء</div>
+      <h1>اكتشف كتابك <span class="gold">القادم مع تينيرت</span></h1>
+      <p class="hero-desc">
+        منصة متكاملة تتيح لطلبة ENSAM استئجار أو شراء الكتب المفضلة لديهم بكل سهولة. استفد من خصم 20% كعضو في جمعية سواعد الأمل.
+      </p>
+      <div class="hero-btns">
+        <a href="#books" class="btn btn-gold"><i class="ri-search-line"></i> تصفح المكتبة</a>
+        <a href="#features" class="btn btn-outline">اكتشف المزيد</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">+200</div><div class="hero-stat-label">كتاب متاح</div></div>
+        <div><div class="hero-stat-num">+150</div><div class="hero-stat-label">طالب مسجل</div></div>
+        <div><div class="hero-stat-num">20%</div><div class="hero-stat-label">خصم الأعضاء</div></div>
+      </div>
     </div>
-    
-    <!-- <script>
-        function redirectToForm(bookName) {
-            // Redirect to the form page and pass the book name in the query string
-            window.location.href = `./Get_Now.html?book=${encodeURIComponent(bookName)}`;
-        }
-    </script>-->
-    
+    <div class="hero-visual">
+      <div class="hero-book-stack">
+        <img class="hero-book" src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&q=80" alt="كتاب">
+        <img class="hero-book" src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80" alt="كتاب">
+        <img class="hero-book" src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&q=80" alt="كتاب">
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- <script>
-    const categoryButtons = document.querySelectorAll('.category_button');
-    const featuredCards = document.querySelectorAll('.featured_card');
+<!-- ═══════════════ BOOKS ═══════════════ -->
+<section id="books">
+  <div class="section-header reveal">
+    <div class="section-line"></div>
+    <h2 class="section-title">مجموعتنا المتميزة</h2>
+    <p class="section-sub">تصفح، ابحث، واقتنِ من بين مجموعة مختارة بعناية</p>
+  </div>
 
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-           
-            button.classList.add('active');
-
-          
-            const category = button.getAttribute('data-category');
-
-          
-            featuredCards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-</script> -->
-
-<!-- Search Section with Title and Category -->
-<div class="search-container">
-    <h2 class="section_title">Search for a Book</h2>
-    <div class="search-bar">
-       
-        <input type="text" placeholder="Enter book title..." id="search-input" oninput="searchBooks()">
-        
-        <!-- Category  -->
-        <select id="category-select" onchange="searchBooks()">
-            <option value="">All Categories</option> 
-            <option value="fiction">Fiction</option>
-            <option value="non-fiction">Non-fiction</option>
-            <option value="science">Science</option>
-            <option value="technology">Technology</option>
-        </select>
-        
-        <button id="search-btn" onclick="searchBooks()">Search</button>
+  <div class="controls-wrap reveal">
+    <div class="controls-bar">
+      <input type="text" id="search" placeholder="ابحث بالعنوان أو المؤلف..." oninput="filterBooks()">
+      <select id="cat-filter" onchange="filterBooks()">
+        <option value="">جميع الفئات</option>
+        <option value="رواية">رواية</option>
+        <option value="علوم">علوم</option>
+        <option value="تكنولوجيا">تكنولوجيا</option>
+        <option value="تاريخ">تاريخ</option>
+        <option value="تنمية ذاتية">تنمية ذاتية</option>
+        <option value="أدب">أدب</option>
+      </select>
+      <button class="search-icon" onclick="filterBooks()"><i class="ri-search-line"></i></button>
     </div>
+  </div>
+
+  <div class="cat-pills reveal" id="cat-pills"></div>
+  <div class="book-grid" id="book-grid"></div>
+</section>
+
+<!-- ═══════════════ FEATURES ═══════════════ -->
+<section class="features" id="features">
+  <div class="geo-bg"></div>
+  <div class="section-header reveal">
+    <div class="section-line"></div>
+    <h2 class="section-title" style="color:#fff">لماذا تينيرت؟</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.45)">نوفر لك تجربة مكتبية فريدة</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal"><div class="feature-icon"><i class="ri-price-tag-3-line"></i></div><h3>أسعار مناسبة</h3><p>كتب بأسعار في متناول الطلبة مع إمكانية الاستئجار</p></div>
+    <div class="feature-card reveal"><div class="feature-icon"><i class="ri-vip-crown-line"></i></div><h3>خصم الأعضاء</h3><p>خصم 20% لأعضاء جمعية سواعد الأمل</p></div>
+    <div class="feature-card reveal"><div class="feature-icon"><i class="ri-truck-line"></i></div><h3>توصيل سريع</h3><p>استلم كتابك داخل الحرم الجامعي في نفس اليوم</p></div>
+    <div class="feature-card reveal"><div class="feature-icon"><i class="ri-refresh-line"></i></div><h3>إرجاع سهل</h3><p>سياسة إرجاع مرنة خلال 7 أيام من الشراء</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-header reveal">
+    <div class="section-line"></div>
+    <h2 class="section-title">ماذا يقول الطلبة؟</h2>
+    <p class="section-sub">تجارب حقيقية من مجتمع ENSAM</p>
+  </div>
+  <div class="test-grid">
+    <article class="test-card reveal">
+      <div class="test-quote">"</div>
+      <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+      <p class="test-text">تينيرت وفرت لي كل الكتب اللي كنت محتاج ليها هاد السيميستر. الأسعار معقولة و الخدمة ممتازة.</p>
+      <div class="test-author"><div class="test-avatar">ي</div><div><div class="test-name">يوسف م.</div><div class="test-role">طالب هندسة ميكانيكية — السنة الثالثة</div></div></div>
+    </article>
+    <article class="test-card reveal">
+      <div class="test-quote">"</div>
+      <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></div>
+      <p class="test-text">خصم سواعد الأمل كيخلي الكتب في المتناول ديال الجميع. مجموعة متنوعة بين الأكاديمي والأدبي.</p>
+      <div class="test-author"><div class="test-avatar">ف</div><div><div class="test-name">فاطمة الزهراء ز.</div><div class="test-role">طالبة هندسة صناعية — السنة الثانية</div></div></div>
+    </article>
+    <article class="test-card reveal">
+      <div class="test-quote">"</div>
+      <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+      <p class="test-text">عجبتني فكرة الاستئجار بزاف! كنقرا الكتاب و كنرجعو، هكاك كنوفر الفلوس و البلاصة.</p>
+      <div class="test-author"><div class="test-avatar">أ</div><div><div class="test-name">أحمد ب.</div><div class="test-role">طالب هندسة كهربائية — السنة الرابعة</div></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta">
+  <div class="geo-bg"></div>
+  <div class="cta-inner reveal">
+    <div class="section-line"></div>
+    <h2>انضم إلى مجتمع القراء</h2>
+    <p>سجل الآن واستفد من العروض الحصرية والكتب الجديدة كل أسبوع</p>
+    <a href="#books" class="btn btn-gold"><i class="ri-arrow-up-line"></i> ابدأ التصفح</a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-logo"><i class="ri-book-open-fill"></i> تينيرت</div>
+  <div class="footer-links">
+    <a href="#"><i class="ri-facebook-fill"></i></a>
+    <a href="#"><i class="ri-instagram-fill"></i></a>
+    <a href="#"><i class="ri-linkedin-fill"></i></a>
+  </div>
+  <p>&copy; 2024 تينيرت — مكتبة ENSAM الدار البيضاء. جميع الحقوق محفوظة.</p>
+</footer>
+
+<!-- Scroll top -->
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="ri-arrow-up-line"></i></button>
+
+<!-- ═══════════════ BUY MODAL ═══════════════ -->
+<div class="modal-overlay" id="buy-modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="geo-bg"></div>
+      <button class="modal-close" onclick="closeModal()"><i class="ri-close-line"></i></button>
+      <h2 id="m-title"></h2>
+      <p id="m-author"></p>
+    </div>
+    <div class="modal-body" id="m-form">
+      <div class="modal-price-tag"><span class="amount" id="m-price"></span><span class="currency">درهم</span></div>
+      <div class="form-group"><label>الاسم الكامل</label><input type="text" id="f-name" placeholder="أدخل اسمك الكامل"></div>
+      <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="f-email" placeholder="you@ensam.ma"></div>
+      <label style="font-weight:700;font-size:.82rem;color:var(--muted);margin-bottom:.6rem;display:block">نوع الطلب</label>
+      <div class="purchase-options" id="purchase-options">
+        <div class="purchase-opt selected" data-type="buy" onclick="selectOpt(this)">
+          <div class="opt-radio"></div>
+          <div class="opt-info"><div class="opt-label">شراء</div><div class="opt-desc">السعر الكامل — الكتاب لك</div></div>
+          <div class="opt-price" id="opt-buy"></div>
+        </div>
+        <div class="purchase-opt" data-type="rent" onclick="selectOpt(this)">
+          <div class="opt-radio"></div>
+          <div class="opt-info"><div class="opt-label">استئجار لمدة شهر</div><div class="opt-desc">وفر 40% — أعد الكتاب بعد شهر</div></div>
+          <div class="opt-price" id="opt-rent"></div>
+        </div>
+        <div class="purchase-opt" data-type="member" onclick="selectOpt(this)">
+          <div class="opt-radio"></div>
+          <div class="opt-info"><div class="opt-label">عضو سواعد الأمل</div><div class="opt-desc">خصم 20% حصري للأعضاء</div></div>
+          <div class="opt-price" id="opt-member"></div>
+        </div>
+      </div>
+      <button class="btn btn-gold btn-full" onclick="confirmPurchase()" style="font-size:1.05rem;padding:1rem"><i class="ri-check-line"></i> تأكيد الطلب</button>
+    </div>
+    <div class="success-state" id="m-success">
+      <div class="success-check"><i class="ri-check-line"></i></div>
+      <h2>تم تأكيد الطلب!</h2>
+      <div class="order-summary" id="order-summary"></div>
+      <p id="success-msg"></p>
+      <button class="btn btn-emerald btn-full" onclick="closeModal()">إغلاق</button>
+    </div>
+  </div>
 </div>
 
-<!-- Search Results Section -->
-<section class="featured section" id="featured-results">
-    <h2 class="section_title">Search Results</h2>
-    <div class="featured_container container" id="results"></div>
-    <div class="pagination" id="pagination"></div>
+<!-- ═══════════════ CART MODAL ═══════════════ -->
+<div class="modal-overlay" id="cart-modal" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal" style="max-width:540px">
+    <div class="modal-header">
+      <div class="geo-bg"></div>
+      <button class="modal-close" onclick="document.getElementById('cart-modal').classList.remove('active')"><i class="ri-close-line"></i></button>
+      <h2><i class="ri-shopping-bag-3-line"></i> سلة المشتريات</h2>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-total-row"><span>المجموع</span><span id="cart-total"></span></div>
+      <button class="btn btn-gold btn-full">إتمام الشراء</button>
+    </div>
+  </div>
+</div>
 
-</section>
+<script>
+// ═══════════════ DATA ═══════════════
+const BOOKS=[
+  {id:1,title:"الخيميائي",author:"باولو كويلو",price:35,cat:"رواية",rating:5,img:"https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&q=80"},
+  {id:2,title:"سابيينز: تاريخ موجز للبشرية",author:"يوفال نوح هراري",price:50,cat:"تاريخ",rating:5,img:"https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80"},
+  {id:3,title:"كود نظيف",author:"روبرت سي مارتن",price:60,cat:"تكنولوجيا",rating:4.5,img:"https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&q=80"},
+  {id:4,title:"تاريخ موجز للزمن",author:"ستيفن هوكينغ",price:45,cat:"علوم",rating:5,img:"https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&q=80"},
+  {id:5,title:"العادات الذرية",author:"جيمس كلير",price:40,cat:"تنمية ذاتية",rating:5,img:"https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&q=80"},
+  {id:6,title:"1984",author:"جورج أورويل",price:30,cat:"رواية",rating:4.5,img:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&q=80"},
+  {id:7,title:"المبتكرون",author:"والتر إيزاكسون",price:55,cat:"تكنولوجيا",rating:4,img:"https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&q=80"},
+  {id:8,title:"الكون",author:"كارل ساغان",price:42,cat:"علوم",rating:5,img:"https://images.unsplash.com/photo-1524578271613-d550eacf6090?w=400&q=80"},
+  {id:9,title:"مقدمة ابن خلدون",author:"ابن خلدون",price:48,cat:"تاريخ",rating:5,img:"https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&q=80"},
+  {id:10,title:"التفكير السريع والبطيء",author:"دانيال كانمان",price:45,cat:"تنمية ذاتية",rating:5,img:"https://images.unsplash.com/photo-1550399105-c4db5fb85c18?w=400&q=80"},
+  {id:11,title:"عالم جديد شجاع",author:"ألدوس هكسلي",price:32,cat:"رواية",rating:4,img:"https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400&q=80"},
+  {id:12,title:"البرمجة بلغة بايثون",author:"إريك ماثيز",price:70,cat:"تكنولوجيا",rating:4.5,img:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80"},
+  {id:13,title:"في ظلال القرآن",author:"سيد قطب",price:55,cat:"أدب",rating:5,img:"https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&q=80"},
+  {id:14,title:"رحلة ابن بطوطة",author:"ابن بطوطة",price:38,cat:"تاريخ",rating:4.5,img:"https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=400&q=80"},
+  {id:15,title:"أساسيات الفيزياء",author:"فرانك بوش",price:65,cat:"علوم",rating:4,img:"https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?w=400&q=80"},
+  {id:16,title:"قوة العادات",author:"تشارلز دويج",price:42,cat:"تنمية ذاتية",rating:4.5,img:"https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&q=80"},
+];
 
-<!--================================= Discount ==============-->
-      <section class="discount section" id="discount">
-        <div class="discount_container container grid">
-            <div class="discount_data">
-                <h2 class="discount_title section_title">
-                     Suggestions
-                </h2>
-                <p class="discount_description">
-                    Explore the diverse reading recommendations from our
-                     bookstore community. Share your favorite books and 
-                     discover new titles suggested by fellow members.
-                     Whether it's a classic or a hidden gem, your
-                     input helps us build a richer collection for all to enjoy.
-                </p>
+let cart=[];
+let currentBook=null;
+let selectedType='buy';
 
-                <a href="" class="button">Go Now</a>
-            </div>
+// ═══════════════ STARS ═══════════════
+function stars(r){let s='';for(let i=1;i<=5;i++)s+=i<=Math.floor(r)?'<i class="ri-star-fill"></i>':i-r<1?'<i class="ri-star-half-fill"></i>':'<i class="ri-star-line"></i>';return s}
 
+// ═══════════════ CATEGORY PILLS ═══════════════
+const cats=[...new Set(BOOKS.map(b=>b.cat))];
+document.getElementById('cat-pills').innerHTML=
+  `<button class="cat-pill active" onclick="pickCat(this,'')" >الكل</button>`+
+  cats.map(c=>`<button class="cat-pill" onclick="pickCat(this,'${c}')">${c}</button>`).join('');
 
-            <div class="discount_images">
-                <img src="./book-assets/img/book1.jpg" alt="image" class="discount_img_1">
-                <img src="./book-assets/img/book2.jpg" alt="image" class="discount_img_2">
-               
-            </div>
+function pickCat(el,cat){
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('cat-filter').value=cat;
+  filterBooks();
+}
+
+// ═══════════════ RENDER ═══════════════
+function renderBooks(list){
+  const g=document.getElementById('book-grid');
+  if(!list.length){g.innerHTML=`<div class="no-results"><i class="ri-search-line"></i>لم يتم العثور على نتائج</div>`;return}
+  g.innerHTML=list.map(b=>`
+    <div class="book-card" onclick="openBuy(${b.id})">
+      <span class="book-badge">${b.cat}</span>
+      <div class="book-cover-wrap">
+        <img class="book-cover" src="${b.img}" alt="${b.title}" loading="lazy">
+        <div class="book-overlay"><button class="btn btn-gold btn-sm">شراء / استئجار</button></div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">${b.title}</div>
+        <div class="book-author">${b.author}</div>
+        <div class="book-bottom">
+          <span class="book-price">${b.price} <span>د.م</span></span>
+          <span class="book-stars">${stars(b.rating)}</span>
         </div>
-      </section>
-
-
-
-       <!--================================= New Books ==============-->
-       <section class="new section" id="new">
-        <h2 class="section_title">
-            New Books
-        </h2>
-        <div class="new_container container">
-            <div class="swiper-wrapper" >
-                <div class="new_swiper swiper">
-                    <div class="swiper-wrapper" id="new-wrapper">
-                        <!--
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book6.jpeg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                
-                                </div>
-                            
-                        </a>
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book13.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book2.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book7.png" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book15.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book3.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book10.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-wrapper" >
-                <div class="new_swiper swiper" >
-                    <div class="swiper-wrapper" id="new-wrapper-2">
-                        <!--
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book9.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book8.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book7.png" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book14.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book16.png" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book12.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-
-
-
-
-                        <a href="" class="new_card swiper-slide">
-                            <img src="./book-assets/img/book10.jpg" alt="image" class="new_img">
-                                <div>
-                                    <h2 class="new_title">New Book</h2>
-                                    <div class="new_prices">
-                                        <span class="new_discount">10 DH</span>
-                                    </div>
-
-                                    <div class="new_starts">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                    </div>
-                                </div>
-                        </a>
-                        -->
-                    </div>
-                </div>
-            </div>
-
-            
-        </div>
-       </section>
-
-
-       <!--================================= Testimonials ==============-->
-       <section class="testimonial section" id="testimonial">
-            <h2 class="section_title">
-                Testimonials
-            </h2>
-
-            <div class="testimonial_container container">
-                <div class="testimonial_swiper swiper">
-                    <div class="swiper-wrapper" id="testimonial-wrapper">
-                        <!--<article class="testimonial_card swiper-slide">
-                            <img src="./book-assets/img/testimonial_img_person_1.jpg" alt="testimonial img person 1" class="testimonial_img">
-                            <h2 class="testimonial_title">Anonymous</h2>
-                            <p class="testimonial_description">
-                                Tinirt Ensam-c Books makes reading easy by 
-                                facilitating access to books at affordable prices
-
-                            </p>
-                            <div class="testimonial_stars">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                        </article>
-
-                        <article class="testimonial_card swiper-slide">
-                            <img src="./book-assets/img/testimonial_img_person_1.jpg" alt="testimonial img person 1" class="testimonial_img">
-                            <h2 class="testimonial_title">Anonymous</h2>
-                            <p class="testimonial_description">
-                                Tinirt Ensam-c Books makes reading easy by 
-                                facilitating access to books at affordable prices
-
-                            </p>
-                            <div class="testimonial_stars">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                        </article>
-
-
-                        <article class="testimonial_card swiper-slide">
-                            <img src="./book-assets/img/testimonial_img_person_1.jpg" alt="testimonial img person 1" class="testimonial_img">
-                            <h2 class="testimonial_title">Anonymous</h2>
-                            <p class="testimonial_description">
-                                Tinirt Ensam-c Books makes reading easy by 
-                                facilitating access to books at affordable prices
-
-                            </p>
-                            <div class="testimonial_stars">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                        </article>
-
-
-                        <article class="testimonial_card swiper-slide">
-                            <img src="./book-assets/img/testimonial_img_person_1.jpg" alt="testimonial img person 1" class="testimonial_img">
-                            <h2 class="testimonial_title">Anonymous</h2>
-                            <p class="testimonial_description">
-                                Tinirt Ensam-c Books makes reading easy by 
-                                facilitating access to books at affordable prices
-
-                            </p>
-                            <div class="testimonial_stars">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                        </article>-->
-                    </div>
-                </div>
-            </div>
-       </section>
-
-    </main>
-
-
-
-
-   
-
-
-
-
-    <!--================================= Footer ==============-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <footer>
-        <div class="footer-container">
-          <div class="social-icons">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-           
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-           
-           
-          </div>
-          <p>&copy; 2024 E-TINIRT BOOKS. All rights reserved.</p>
-        </div>
-    </footer>
-      
-      
-   
-    <!--================================= Scroll Up ==============-->
-    <a href="" class="scrollup" id="scroll-up">
-        <i class="ri-arrow-up-line"></i>
-    </a>
-
-    <!--================================= Scroll Reveal ==============-->
-
-      <script src="./book-assets/js/scrollreveal.min.js"></script>
-
-
-    <!--================================= Swiper js ==============-->
-    <script src="./book-assets/js/swiper-bundle.min.js"></script>
-    <script src="./book-assets/js/main.js"></script>
-    <script type="module" src="./assets/js/pages/libraryPage.js"></script>
+      </div>
+    </div>`).join('');
+}
+
+function filterBooks(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const c=document.getElementById('cat-filter').value;
+  renderBooks(BOOKS.filter(b=>(b.title.toLowerCase().includes(q)||b.author.toLowerCase().includes(q))&&(!c||b.cat===c)));
+}
+
+// ═══════════════ BUY MODAL ═══════════════
+function openBuy(id){
+  currentBook=BOOKS.find(b=>b.id===id);if(!currentBook)return;
+  selectedType='buy';
+  document.getElementById('m-title').textContent=currentBook.title;
+  document.getElementById('m-author').textContent=currentBook.author;
+  document.getElementById('m-price').textContent=currentBook.price;
+  document.getElementById('opt-buy').textContent=currentBook.price+' د.م';
+  document.getElementById('opt-rent').textContent=Math.round(currentBook.price*.6)+' د.م';
+  document.getElementById('opt-member').textContent=Math.round(currentBook.price*.8)+' د.م';
+  document.getElementById('m-form').style.display='block';
+  document.getElementById('m-success').classList.remove('active');
+  document.getElementById('f-name').value='';
+  document.getElementById('f-email').value='';
+  document.querySelectorAll('.purchase-opt').forEach((o,i)=>{o.classList.toggle('selected',i===0)});
+  document.getElementById('buy-modal').classList.add('active');
+}
+function closeModal(){document.getElementById('buy-modal').classList.remove('active')}
+
+function selectOpt(el){
+  document.querySelectorAll('.purchase-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedType=el.dataset.type;
+}
+
+function confirmPurchase(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  if(!name||!email){alert('يرجى ملء الاسم والبريد الإلكتروني');return}
+  let price=currentBook.price,label='شراء';
+  if(selectedType==='rent'){price=Math.round(currentBook.price*.6);label='استئجار (شهر)'}
+  else if(selectedType==='member'){price=Math.round(currentBook.price*.8);label='شراء (عضو)'}
+
+  cart.push({...currentBook,finalPrice:price,label,buyerName:name});
+  updateCartCount();
+
+  document.getElementById('m-form').style.display='none';
+  document.getElementById('order-summary').innerHTML=`
+    <div class="order-row"><span>الكتاب</span><span>${currentBook.title}</span></div>
+    <div class="order-row"><span>نوع الطلب</span><span>${label}</span></div>
+    <div class="order-row"><span>الاسم</span><span>${name}</span></div>
+    <div class="order-row total"><span>المبلغ الإجمالي</span><span>${price} د.م</span></div>`;
+  document.getElementById('success-msg').textContent=`سيتم إرسال تأكيد الطلب إلى ${email}`;
+  document.getElementById('m-success').classList.add('active');
+}
+
+// ═══════════════ CART ═══════════════
+function updateCartCount(){document.getElementById('cart-count').textContent=cart.length}
+
+function openCart(){
+  const body=document.getElementById('cart-body');
+  const footer=document.getElementById('cart-footer');
+  if(!cart.length){
+    body.innerHTML=`<div class="cart-empty"><i class="ri-shopping-bag-3-line"></i><p>السلة فارغة</p></div>`;
+    footer.style.display='none';
+  }else{
+    body.innerHTML=cart.map((c,i)=>`
+      <div class="cart-item">
+        <img class="cart-item-img" src="${c.img}" alt="${c.title}">
+        <div class="cart-item-info"><div class="cart-item-title">${c.title}</div><div class="cart-item-type">${c.label}</div></div>
+        <div class="cart-item-price">${c.finalPrice} د.م</div>
+        <button class="cart-item-del" onclick="removeFromCart(${i})"><i class="ri-delete-bin-6-line"></i></button>
+      </div>`).join('');
+    footer.style.display='block';
+    document.getElementById('cart-total').textContent=cart.reduce((s,c)=>s+c.finalPrice,0)+' د.م';
+  }
+  document.getElementById('cart-modal').classList.add('active');
+}
+
+function removeFromCart(i){cart.splice(i,1);updateCartCount();openCart()}
+
+// ═══════════════ SCROLL EFFECTS ═══════════════
+const nb=document.getElementById('navbar');
+const st=document.getElementById('scroll-top');
+window.addEventListener('scroll',()=>{
+  nb.classList.toggle('scrolled',scrollY>80);
+  st.classList.toggle('visible',scrollY>500);
+});
+
+// ═══════════════ REVEAL ON SCROLL ═══════════════
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ═══════════════ INIT ═══════════════
+renderBooks(BOOKS);
+</script>
+</body>
 </html>
